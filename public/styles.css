@@ -16,6 +16,9 @@
   --sat-3: 76%;
   --lig-3: 61%;
   --clr-3: hsl(var(--hue-3),var(--sat-3),var(--lig-3));
+
+  /* BTN */
+  --radius: 10px;
 }
 
 :focus {
@@ -26,22 +29,39 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
   min-height: 100vh;
-  background-color: hsl(0, 0%, 95%);
-  font-family: 'Inter', sans-serif;
+  background-color: hsl(0, 0%, 95%);  
   font-weight: 400;
+  text-align: center;
 }
 
 main {
   min-height: 90vh;
-  display: flex;
-  text-align: center;
+  display: flex;  
   align-items: center;
   justify-content: center;
   flex-flow: column nowrap;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, auto);
+
+  grid-template-areas: 
+  "name-2 name-2 name-2 name-2"
+  "hand-2  hand-2  hand-2  hand-2"
+  "hand-1  hand-1  hand-1  hand-1"
+  "choose choose choose choose"
+  "name-1 name-1 name-1 name-1";
+
+  min-width: 250px;
+  margin: 0 auto;
 }
 
 .heading {
@@ -56,14 +76,15 @@ main {
   text-decoration: none;
   text-align: center;
   font-weight: 500;
+  font-size: 1em;
 
-  min-width: 14em;
+  min-width: 14rem;
   min-height: 3.5rem;
   padding: 1em 2em;
   margin-bottom: 1em;
 
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius);
 
   cursor: pointer;
 }
@@ -76,11 +97,107 @@ main {
 .secondary {
   background: transparent;
   color: hsl(var(--hue-1),var(--sat-1),calc(var(--lig-1) + 10%));
-
   border: .125rem solid hsl(var(--hue-1),var(--sat-1),calc(var(--lig-1) + 10%));
 }
 
 .btn:hover,
 .btn:focus {
-  box-shadow: 0 0 3px 3px rgb(165, 165, 165);
+  box-shadow: 0 0 3px 3px hsl(0, 0%, 65%);
 }
+
+.player-name {
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.75em;
+  background: var(--clr-2);
+}
+
+.hand-1,
+.hand-2 {
+  --min-height: 54vh;
+  min-height: calc(var(--min-height) / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 9rem;
+  min-width: 9rem;
+  aspect-ratio: 1;
+
+  border-radius: 100%;
+  border: 2px solid hsl(0, 0%, 60%);
+
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+.choose {
+  min-height: 26vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  gap: .5rem;
+}
+
+button.rock, 
+button.paper, 
+button.scissors {
+  margin: 0;
+  min-height: 2.5rem;
+  min-width: 10rem;
+  padding: .5em 1em;
+}
+
+.result {
+  /* JS magic */
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: hsl(0 0% 50% / 0.5);
+  border-radius: var(--radius);
+
+  height: 5em;
+  width: 80%;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  transform: translateY(-6.5rem);
+}
+
+.result > span {
+  white-space: nowrap;
+  font-weight: 900;
+  font-size: 2em;
+}
+
+/* ----- grid areas ----- */
+.name-1 {
+  grid-area: name-1;
+}
+
+.name-2 {
+  grid-area: name-2;
+}
+
+.hand-1 {
+  grid-area: hand-1;
+}
+
+.hand-2 {
+  grid-area: hand-2;
+}
+
+.choose {
+  grid-area: choose;
+}
+/* ---------------------- */
