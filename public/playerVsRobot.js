@@ -58,17 +58,17 @@ function RobotResponse(userChoice) {
     }
 
     if (userChoice == rand) {
-      let exclamation = "Tie";
+      let exclamation = "¯\\_(ツ)_/¯";
       resultSpan.style.color = "hsl(0 0% 20%)";
       result.style.boxShadow = "0 0 0 3px hsl(0 0% 20%)";
       displayResult(exclamation);
     } else if (userChoice - rand == 1 || userChoice - rand == -2) {
-      let exclamation = "YOU WIN";
+      let exclamation = "（￣︶￣）↗";
       resultSpan.style.color = "limegreen";
       result.style.boxShadow = "0 0 0 3px limegreen";
       displayResult(exclamation);
     } else {
-      let exclamation = "You lose";
+      let exclamation = "<(＿　＿)>";
       resultSpan.style.color = "hsl(0 100% 50%)";
       result.style.boxShadow = "0 0 0 3px hsl(0 100% 50%)";
       displayResult(exclamation);
