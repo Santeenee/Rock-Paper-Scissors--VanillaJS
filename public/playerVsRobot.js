@@ -63,7 +63,7 @@ function RobotResponse(userChoice) {
       result.style.boxShadow = "0 0 0 3px hsl(0 0% 20%)";
       displayResult(exclamation);
     } else if (userChoice - rand == 1 || userChoice - rand == -2) {
-      let exclamation = "↖(^▽^)↗";
+      let exclamation = "\\(^▽^)/";
       resultSpan.style.color = "limegreen";
       result.style.boxShadow = "0 0 0 3px limegreen";
       displayResult(exclamation);
