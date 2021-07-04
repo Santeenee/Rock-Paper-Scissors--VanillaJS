@@ -244,8 +244,8 @@ button.scissors {
 @media (orientation: landscape) {
   .grid {
     grid-template-areas: 
-    "name-1  name-1  name-2  name-2"
-    "hand-1  hand-1  hand-2  hand-2"
+    "name-2  name-2  name-1  name-1"
+    "hand-2  hand-2  hand-1  hand-1"
     "choose  choose  choose  choose";
 
     /* 
