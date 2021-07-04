@@ -52,7 +52,7 @@ function RobotResponse(userChoice) {
     }
 
     if (userChoice == rand) {
-      let exclamation = "¯\\_(ツ)_/¯";
+      let exclamation = "Tie";
       resultSpan.style.color = "hsl(0 0% 20%)";
       result.style.boxShadow = "0 0 0 3px hsl(0 0% 20%)";
       displayResult(exclamation);
