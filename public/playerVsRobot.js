@@ -68,7 +68,7 @@ function RobotResponse(userChoice) {
       result.style.boxShadow = "0 0 0 3px limegreen";
       displayResult(exclamation);
     } else {
-      let exclamation = "(⌣́_⌣̀) ";
+      let exclamation = "(-_-) ";
       resultSpan.style.color = "hsl(0 100% 50%)";
       result.style.boxShadow = "0 0 0 3px hsl(0 100% 50%)";
       displayResult(exclamation);
