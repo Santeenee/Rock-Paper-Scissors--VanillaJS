@@ -112,6 +112,7 @@ main {
   align-items: center;
   font-size: 1.75em;
   background: var(--clr-2);
+  color: white;
 }
 
 .hand-1,
@@ -230,19 +231,27 @@ button.scissors {
     grid-template-areas: 
     "name-1  name-1  name-2  name-2"
     "hand-1  hand-1  hand-2  hand-2"
-    "hand-1  hand-1  hand-2  hand-2"
-    "hand-1  hand-1  hand-2  hand-2"
-    "hand-1  hand-1  hand-2  hand-2"
     "choose  choose  choose  choose";
+
+    /* 
+      names  = 15vh
+      hands  = 60vh
+      choose = 25vh
+    */
   }
 
-  .choose {
-    flex-flow: row nowrap;
-    gap: 2rem;
+  .player-name {
+    min-height: 15vh;
   }
 
   .hand-1, .hand-2 {
-    min-height: 13rem;
+    min-height: 60vh;
+  }
+
+  .choose {
+    min-height: 25vh;
+    flex-flow: row nowrap;
+    gap: 2rem;
   }
 
   .result {
