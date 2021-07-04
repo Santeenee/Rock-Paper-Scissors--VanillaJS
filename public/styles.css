@@ -121,9 +121,11 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .circle {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,3 +218,34 @@ button.scissors {
   grid-area: choose;
 }
 /* ---------------------- */
+
+/* 
+  ===============
+   Media Queries
+  =============== 
+*/ 
+
+@media (orientation: landscape) {
+  .grid {
+    grid-template-areas: 
+    "name-1  name-1  name-2  name-2"
+    "hand-1  hand-1  hand-2  hand-2"
+    "hand-1  hand-1  hand-2  hand-2"
+    "hand-1  hand-1  hand-2  hand-2"
+    "hand-1  hand-1  hand-2  hand-2"
+    "choose  choose  choose  choose";
+  }
+
+  .choose {
+    flex-flow: row nowrap;
+    gap: 2rem;
+  }
+
+  .hand-1, .hand-2 {
+    min-height: 13rem;
+  }
+
+  .result {
+    transform: translateY(0);
+  }
+}
