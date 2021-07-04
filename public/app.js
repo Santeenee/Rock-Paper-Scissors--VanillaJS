@@ -8,6 +8,8 @@ const robotSpan = document.querySelector(".span-hand-2");
 const resultSpan = document.querySelector(".result-span");
 const result = document.querySelector(".result");
 
+const robotCircle = document.querySelectorAll(".circle")[1];
+
 function RobotResponse(userChoice) {
   btnRock.style.pointerEvents = "none";
   btnPaper.style.pointerEvents = "none";
@@ -16,48 +18,62 @@ function RobotResponse(userChoice) {
   /* between 0 and 2 */
   let rand = Math.floor(Math.random() * 3);
 
-  switch (rand) {
-    case 0:
-      robotSpan.innerText = "Rock";
-      break;
+  /* animation */
+  robotSpan.innerText = "";
+  robotCircle.classList.add("animate");
+  setTimeout(() => {
+    robotCircle.classList.remove("animate");
 
-    case 1:
-      robotSpan.innerText = "Paper";
-      break;
+    switch (rand) {
+      case 0:
+        robotSpan.innerText = "Rock";
+        break;
 
-    case 2:
-      robotSpan.innerText = "Scissors";
-      break;
+      case 1:
+        robotSpan.innerText = "Paper";
+        break;
 
-    default:
-      alert("??? ROBOT-> " + rand + " USER-> " + userChoice);
-      break;
-  }
+      case 2:
+        robotSpan.innerText = "Scissors";
+        break;
 
-  function displayResult(exclamation) {
-    setTimeout(() => {
-      result.style.display = "flex";
-      resultSpan.innerText = exclamation;
+      default:
+        alert("ERROR robot-> [" + rand + "] user-> [" + userChoice + "]");
+        break;
+    }
 
+    function displayResult(exclamation) {
       setTimeout(() => {
-        result.style.display = "none";
-        btnRock.style.pointerEvents = "all";
-        btnPaper.style.pointerEvents = "all";
-        btnScissors.style.pointerEvents = "all";
-      }, 1500);
-    }, 500);
-  }
+        result.style.display = "flex";
+        resultSpan.innerText = exclamation;
 
-  if (userChoice == rand) {
-    let resultExclamation = "Tie";
-    displayResult(resultExclamation);
-  } else if (userChoice - rand == 1) {
-    let resultExclamation = "YOU WIN";
-    displayResult(resultExclamation);
-  } else {
-    let resultExclamation = "You lose";
-    displayResult(resultExclamation);
-  }
+        setTimeout(() => {
+          result.style.display = "none";
+
+          btnRock.style.pointerEvents = "all";
+          btnPaper.style.pointerEvents = "all";
+          btnScissors.style.pointerEvents = "all";
+        }, 1500);
+      }, 500);
+    }
+
+    if (userChoice == rand) {
+      let exclamation = "Tie";
+      resultSpan.style.color = "hsl(0 0% 20%)";
+      result.style.boxShadow = "0 0 0 3px hsl(0 0% 20%)";
+      displayResult(exclamation);
+    } else if (userChoice - rand == 1 || userChoice - rand == -2) {
+      let exclamation = "YOU WIN";
+      resultSpan.style.color = "limegreen";
+      result.style.boxShadow = "0 0 0 3px limegreen";
+      displayResult(exclamation);
+    } else {
+      let exclamation = "You lose";
+      resultSpan.style.color = "hsl(0 100% 50%)";
+      result.style.boxShadow = "0 0 0 3px hsl(0 100% 50%)";
+      displayResult(exclamation);
+    }
+  }, 1500);
 }
 
 btnRock.addEventListener("click", (e) => {

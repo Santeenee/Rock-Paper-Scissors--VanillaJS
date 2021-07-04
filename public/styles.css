@@ -139,6 +139,21 @@ main {
   font-size: 1.5em;
 }
 
+.circle.animate {
+  animation: circleBreath 1.5s forwards;
+}
+
+@keyframes circleBreath {
+  50% {
+    min-height: 10rem;
+    min-width: 10rem;
+  }
+  to {
+    min-height: 9rem;
+    min-width: 9rem;
+  }
+}
+
 .choose {
   min-height: 26vh;
   display: flex;
@@ -163,11 +178,11 @@ button.scissors {
   align-items: center;
   justify-content: center;
 
-  background: hsl(0 0% 50% / 0.5);
+  background: hsl(0 0% 90%);
   border-radius: var(--radius);
 
   height: 5em;
-  width: 80%;
+  width: 15em;
   position: fixed;
   inset: 0;
   margin: auto;
