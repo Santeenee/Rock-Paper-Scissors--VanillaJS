@@ -15,12 +15,14 @@
   --hue-2: 173;
   --sat-2: 58%;
   --lig-2: 39%;
-  --clr-2: hsl(var(--hue-2), var(--sat-2), var(--lig-2));
+  --clr-2:      hsl(var(--hue-2), var(--sat-2), var(--lig-2));
+  --clr-2-dark: hsl(var(--hue-2), var(--sat-2), calc(var(--lig-2) - 10%));
 
   --hue-3: 12;
   --sat-3: 76%;
   --lig-3: 61%;
-  --clr-3: hsl(var(--hue-3),var(--sat-3),var(--lig-3));
+  --clr-3:      hsl(var(--hue-3), var(--sat-3), var(--lig-3));
+  --clr-3-dark: hsl(var(--hue-3), var(--sat-3), calc(var(--lig-3) - 10%));
 
   /* BTN */
   --radius: 10px;
@@ -227,8 +229,8 @@ button.scissors {
   background: var(--bckgr);
   border-radius: var(--radius);
 
-  height: 5em;
-  width: 18em;
+  height: 4.5em;
+  width: 15em;
 
   /* you thought you knew all the ways to center a div... hehehe */
   position: fixed;
@@ -239,9 +241,8 @@ button.scissors {
 }
 
 .result > span {
-  white-space: nowrap;
   font-weight: 900;
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 /* ----- grid areas ----- */

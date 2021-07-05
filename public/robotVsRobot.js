@@ -8,6 +8,8 @@ const result = document.querySelector(".result");
 
 const circles = document.querySelectorAll(".circle");
 
+const spanRobotNames = document.querySelectorAll(".span-name");
+
 function RobotResponse(randRobot1) {
   btnPlay.style.pointerEvents = "none";
 
@@ -82,14 +84,14 @@ function RobotResponse(randRobot1) {
       result.style.boxShadow = "0 0 0 3px hsl(0 0% 20%)";
       displayResult(exclamation);
     } else if (randRobot1 - randRobot2 == 1 || randRobot1 - randRobot2 == -2) {
-      let exclamation = "Robot-1 wins";
-      resultSpan.style.color = "limegreen";
-      result.style.boxShadow = "0 0 0 3px limegreen";
+      let exclamation = `${spanRobotNames[0].innerText} wins`;
+      resultSpan.style.color = "var(--clr-2-dark)";
+      result.style.boxShadow = "0 0 0 3px var(--clr-2-dark)";
       displayResult(exclamation);
     } else {
-      let exclamation = "Robot-2 wins";
-      resultSpan.style.color = "red";
-      result.style.boxShadow = "0 0 0 3px red";
+      let exclamation = `${spanRobotNames[1].innerText} wins`;
+      resultSpan.style.color = "var(--clr-3-dark)";
+      result.style.boxShadow = "0 0 0 3px var(--clr-3-dark)";
       displayResult(exclamation);
     }
   }, 1500);

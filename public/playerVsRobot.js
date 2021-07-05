@@ -80,24 +80,33 @@ function RobotResponse(userChoice) {
       }, 500);
     }
 
+    //DISPLAY RESULTS (win, lose, tie)
     if (userChoice == rand) {
-      let exclamation = "¯\\_(ツ)_/¯";
+      let exclamation = "¯\\_(ツ)_/¯ tie";
+
       resultSpan.style.color = "hsl(0 0% 20%)";
       result.style.boxShadow = "0 0 0 3px hsl(0 0% 20%)";
+
       displayResult(exclamation);
     } else if (userChoice - rand == 1 || userChoice - rand == -2) {
-      let exclamation = "\\(^▽^)/";
-      resultSpan.style.color = "limegreen";
-      result.style.boxShadow = "0 0 0 3px limegreen";
+      let exclamation = "\\(^▽^)/ you win";
+
+      resultSpan.style.color = "var(--clr-2-dark)";
+      result.style.boxShadow = "0 0 0 3px var(--clr-2-dark)";
+
       displayResult(exclamation);
     } else {
-      let exclamation = "(-_-) ";
-      resultSpan.style.color = "red";
-      result.style.boxShadow = "0 0 0 3px red";
+      let exclamation = "(-_-) you lose";
+
+      resultSpan.style.color = "var(--clr-3-dark)";
+      result.style.boxShadow = "0 0 0 3px var(--clr-3-dark)";
+
       displayResult(exclamation);
     }
   }, 1500);
 }
+
+/* EVENT LISTENERS SECTION */
 
 btnRock.addEventListener("click", (e) => {
   let userChoice = 0;
