@@ -12,7 +12,10 @@
   --lig-1: 24%;
   --clr-1: hsl(var(--hue-1),var(--sat-1),var(--lig-1));
 
-  --clr-2: hsl(173, 58%, 39%);
+  --hue-2: 173;
+  --sat-2: 58%;
+  --lig-2: 39%;
+  --clr-2: hsl(var(--hue-2), var(--sat-2), var(--lig-2));
 
   --hue-3: 12;
   --sat-3: 76%;
@@ -21,6 +24,9 @@
 
   /* BTN */
   --radius: 10px;
+
+  /* .circle */
+  --animation-duration: 1.5s;
 }
 
 :focus {
@@ -102,6 +108,10 @@ main {
   border: .125rem solid hsl(var(--hue-1),var(--sat-1),calc(var(--lig-1) + 10%));
 }
 
+.play {
+  margin: 0;
+}
+
 .btn:hover,
 .btn:focus {
   box-shadow: 0 0 3px 3px hsl(0, 0%, 65%);
@@ -115,6 +125,14 @@ main {
   font-size: 1.75em;
   background: var(--clr-2);
   color: white;
+}
+
+.name-1 {
+  background: var(--clr-2);
+}
+
+.name-2 {
+  background: var(--clr-3);
 }
 
 .hand-1,
@@ -144,8 +162,12 @@ main {
   font-size: 1.5em;
 }
 
-.circle.animate {
-  animation: circleBreath 1.5s ease;
+.hand-1 .circle.animate {
+  animation: circleBreath-Clr2 var(--animation-duration) ease;
+}
+
+.hand-2 .circle.animate {
+  animation: circleBreath-Clr3 var(--animation-duration) ease;
 }
 
 /* old weak animation */
@@ -160,7 +182,16 @@ main {
   }
 }*/
 
-@keyframes circleBreath {
+@keyframes circleBreath-Clr2 {
+  50% {
+    box-shadow: 
+    inset 0 0 0 10px var(--clr-2),
+    inset 0 0 0 20px hsl(var(--hue-2) var(--sat-2) calc(var(--lig-2) + 5%)),
+    inset 0 0 0 30px hsl(var(--hue-2) var(--sat-2) calc(var(--lig-2) + 10%));
+  }
+}
+
+@keyframes circleBreath-Clr3 {
   50% {
     box-shadow: 
     inset 0 0 0 10px var(--clr-3),

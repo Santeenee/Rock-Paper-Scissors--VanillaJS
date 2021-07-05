@@ -8,21 +8,44 @@ const robotSpan = document.querySelector(".span-hand-2");
 const resultSpan = document.querySelector(".result-span");
 const result = document.querySelector(".result");
 
-const robotCircle = document.querySelectorAll(".circle")[1];
+const circles = document.querySelectorAll(".circle");
 
 function RobotResponse(userChoice) {
   btnRock.style.pointerEvents = "none";
   btnPaper.style.pointerEvents = "none";
   btnScissors.style.pointerEvents = "none";
 
+  playerSpan.innerText = "";
+  robotSpan.innerText = "";
+
   /* between 0 and 2 */
   let rand = Math.floor(Math.random() * 3);
 
   /* animation */
-  robotSpan.innerText = "";
-  robotCircle.classList.add("animate");
+  circles[0].classList.add("animate");
+  circles[1].classList.add("animate");
+
   setTimeout(() => {
-    robotCircle.classList.remove("animate");
+    circles[0].classList.remove("animate");
+    circles[1].classList.remove("animate");
+
+    switch (userChoice) {
+      case 0:
+        playerSpan.innerText = "Rock";
+        break;
+
+      case 1:
+        playerSpan.innerText = "Paper";
+        break;
+
+      case 2:
+        playerSpan.innerText = "Scissors";
+        break;
+
+      default:
+        alert("ERROR robot-> [" + rand + "] user-> [" + userChoice + "]");
+        break;
+    }
 
     switch (rand) {
       case 0:
@@ -69,30 +92,24 @@ function RobotResponse(userChoice) {
       displayResult(exclamation);
     } else {
       let exclamation = "(-_-) ";
-      resultSpan.style.color = "hsl(0 100% 50%)";
-      result.style.boxShadow = "0 0 0 3px hsl(0 100% 50%)";
+      resultSpan.style.color = "red";
+      result.style.boxShadow = "0 0 0 3px red";
       displayResult(exclamation);
     }
   }, 1500);
 }
 
 btnRock.addEventListener("click", (e) => {
-  playerSpan.innerText = "Rock";
   let userChoice = 0;
-
   RobotResponse(userChoice);
 });
 
 btnPaper.addEventListener("click", (e) => {
-  playerSpan.innerText = "Paper";
   let userChoice = 1;
-
   RobotResponse(userChoice);
 });
 
 btnScissors.addEventListener("click", (e) => {
-  playerSpan.innerText = "Scissors";
   let userChoice = 2;
-
   RobotResponse(userChoice);
 });
