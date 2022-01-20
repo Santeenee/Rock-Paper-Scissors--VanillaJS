@@ -1,6 +1,6 @@
-const btnRock = document.querySelector(".rock");
-const btnPaper = document.querySelector(".paper");
-const btnScissors = document.querySelector(".scissors");
+const btnRock = document.querySelector(".rock"); //0
+const btnPaper = document.querySelector(".paper"); //1
+const btnScissors = document.querySelector(".scissors"); //2
 
 const playerSpan = document.querySelector(".span-hand-1");
 const robotSpan = document.querySelector(".span-hand-2");
@@ -20,30 +20,32 @@ function RobotResponse(userChoice) {
   playerSpan.innerText = "";
   robotSpan.innerText = "";
 
+  circles[0].style.border = "2px solid hsl(0, 0%, 60%)";
+  circles[1].style.border = "2px solid hsl(0, 0%, 60%)";
+
+  // between 0 and 2
+  let robotChoice = Math.floor(Math.random() * 3);
+
+  //it begins to animate
+  circles[0].classList.add("animate");
+  circles[1].classList.add("animate");
+
   //save last N userChoices
   lastUserChoices.push(userChoice)
 
   //little ""AI"" lol
-  //if same button 3 times or more
-  //robot win
-  if (lastUserChoices.length >= 3 &&
-    userChoice === lastUserChoices[lastUserChoices.length-2] &&
-    lastUserChoices[lastUserChoices.length-2] === lastUserChoices[lastUserChoices.length-3]) 
-  {
-    if (userChoice != 2) {
-      rand = userChoice + 1;
-      
+  //if same button is pressed more than 3 times
+  //robot always win
+  if (lastUserChoices.length > 3 &&
+    userChoice === lastUserChoices[lastUserChoices.length - 2] &&
+    lastUserChoices[lastUserChoices.length - 2] === lastUserChoices[lastUserChoices.length - 3]) {
+    if (userChoice !== 2) {
+      robotChoice = userChoice + 1;
     } else {
-      rand = 0;
+      robotChoice = 0;
     }
   }
-
-  /* between 0 and 2 */
-  let rand = Math.floor(Math.random() * 3);
-
-  /* animation */
-  circles[0].classList.add("animate");
-  circles[1].classList.add("animate");
+  console.log(`you [${userChoice}]\nrobot [${robotChoice}]`)
 
   setTimeout(() => {
     circles[0].classList.remove("animate");
@@ -63,11 +65,11 @@ function RobotResponse(userChoice) {
         break;
 
       default:
-        alert("ERROR robot-> [" + rand + "] user-> [" + userChoice + "]");
+        alert("ERROR robot-> [" + robotChoice + "] user-> [" + userChoice + "]");
         break;
     }
 
-    switch (rand) {
+    switch (robotChoice) {
       case 0:
         robotSpan.innerText = "Rock";
         break;
@@ -81,7 +83,7 @@ function RobotResponse(userChoice) {
         break;
 
       default:
-        alert("ERROR robot-> [" + rand + "] user-> [" + userChoice + "]");
+        alert("ERROR robot-> [" + robotChoice + "] user-> [" + userChoice + "]");
         break;
     }
 
@@ -93,6 +95,8 @@ function RobotResponse(userChoice) {
         setTimeout(() => {
           result.style.display = "none";
 
+
+
           btnRock.style.pointerEvents = "all";
           btnPaper.style.pointerEvents = "all";
           btnScissors.style.pointerEvents = "all";
@@ -101,20 +105,24 @@ function RobotResponse(userChoice) {
     }
 
     //DISPLAY RESULTS (win, lose, tie)
-    if (userChoice == rand) {
+    if (userChoice == robotChoice) {
       let exclamation = "¯\\_(ツ)_/¯ tie";
 
       resultSpan.style.color = "hsl(0 0% 20%)";
       result.style.boxShadow = "0 0 0 3px hsl(0 0% 20%)";
 
       displayResult(exclamation);
-    } else if (userChoice - rand == 1 || userChoice - rand == -2) {
+    } else if (userChoice - robotChoice == 1 || userChoice - robotChoice == -2) {
       let exclamation = "\\(^▽^)/ you win";
 
       resultSpan.style.color = "var(--clr-2-dark)";
       result.style.boxShadow = "0 0 0 3px var(--clr-2-dark)";
 
       displayResult(exclamation);
+
+      setTimeout(() => {
+        circles[0].style.border = '3px solid var(--clr-2)';
+      }, 500);
     } else {
       let exclamation = "(-_-) you lose";
 
@@ -122,23 +130,27 @@ function RobotResponse(userChoice) {
       result.style.boxShadow = "0 0 0 3px var(--clr-3-dark)";
 
       displayResult(exclamation);
+
+      setTimeout(() => {
+        circles[1].style.border = '3px solid var(--clr-3)';
+      }, 500);
     }
   }, 1500);
 }
 
-/* EVENT LISTENERS SECTION */
+/* EVENT LISTENERS */
 
-btnRock.addEventListener("click", (e) => {
+btnRock.addEventListener("click", () => {
   let userChoice = 0;
   RobotResponse(userChoice);
 });
 
-btnPaper.addEventListener("click", (e) => {
+btnPaper.addEventListener("click", () => {
   let userChoice = 1;
   RobotResponse(userChoice);
 });
 
-btnScissors.addEventListener("click", (e) => {
+btnScissors.addEventListener("click", () => {
   let userChoice = 2;
   RobotResponse(userChoice);
 });

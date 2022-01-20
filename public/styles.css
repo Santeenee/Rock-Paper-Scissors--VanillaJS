@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap');
-/* table of contents */
-/* ... */
 
 :root {
 	/* COLORS */
@@ -98,6 +96,7 @@ main {
 	border-radius: var(--radius);
 
 	cursor: pointer;
+	user-select: none;
 }
 
 .primary {
