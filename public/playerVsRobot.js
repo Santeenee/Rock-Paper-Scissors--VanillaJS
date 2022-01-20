@@ -10,6 +10,8 @@ const result = document.querySelector(".result");
 
 const circles = document.querySelectorAll(".circle");
 
+let lastUserChoices = [];
+
 function RobotResponse(userChoice) {
   btnRock.style.pointerEvents = "none";
   btnPaper.style.pointerEvents = "none";
@@ -17,6 +19,24 @@ function RobotResponse(userChoice) {
 
   playerSpan.innerText = "";
   robotSpan.innerText = "";
+
+  //save last N userChoices
+  lastUserChoices.push(userChoice)
+
+  //little ""AI"" lol
+  //if same button 3 times or more
+  //robot win
+  if (lastUserChoices.length >= 3 &&
+    userChoice === lastUserChoices[lastUserChoices.length-2] &&
+    lastUserChoices[lastUserChoices.length-2] === lastUserChoices[lastUserChoices.length-3]) 
+  {
+    if (userChoice != 2) {
+      rand = userChoice + 1;
+      
+    } else {
+      rand = 0;
+    }
+  }
 
   /* between 0 and 2 */
   let rand = Math.floor(Math.random() * 3);
