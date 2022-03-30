@@ -48,8 +48,8 @@ function RobotResponse(userChoice) {
   console.log(`you [${userChoice}]\nrobot [${robotChoice}]`)
 
   setTimeout(() => {
-    circles[0].classList.remove("animate");
-    circles[1].classList.remove("animate");
+    circles[0].classList.remove("animate"); //circle1
+    circles[1].classList.remove("animate"); //circle2
 
     switch (userChoice) {
       case 0:
@@ -89,13 +89,14 @@ function RobotResponse(userChoice) {
 
     function displayResult(exclamation) {
       setTimeout(() => {
+        result.style.opacity = 0; //preparing animation
         result.style.display = "flex";
         resultSpan.innerText = exclamation;
+        result.classList.add('animate-result');
 
         setTimeout(() => {
+          result.classList.remove('animate-result');
           result.style.display = "none";
-
-
 
           btnRock.style.pointerEvents = "all";
           btnPaper.style.pointerEvents = "all";
@@ -109,14 +110,14 @@ function RobotResponse(userChoice) {
       let exclamation = "¯\\_(ツ)_/¯ tie";
 
       resultSpan.style.color = "hsl(0 0% 20%)";
-      result.style.boxShadow = "0 0 0 3px hsl(0 0% 20%)";
+      result.style.boxShadow = "0 0 50px 3px hsl(0 0% 60%)";
 
       displayResult(exclamation);
     } else if (userChoice - robotChoice == 1 || userChoice - robotChoice == -2) {
       let exclamation = "\\(^▽^)/ you win";
 
       resultSpan.style.color = "var(--clr-2-dark)";
-      result.style.boxShadow = "0 0 0 3px var(--clr-2-dark)";
+      result.style.boxShadow = "0 0 50px 3px var(--clr-2)";
 
       displayResult(exclamation);
 
@@ -127,7 +128,7 @@ function RobotResponse(userChoice) {
       let exclamation = "(-_-) you lose";
 
       resultSpan.style.color = "var(--clr-3-dark)";
-      result.style.boxShadow = "0 0 0 3px var(--clr-3-dark)";
+      result.style.boxShadow = "0 0 50px 3px var(--clr-3)";
 
       displayResult(exclamation);
 

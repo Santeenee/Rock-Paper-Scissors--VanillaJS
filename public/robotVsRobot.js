@@ -67,10 +67,14 @@ function RobotResponse(randRobot1) {
 
     function displayResult(exclamation) {
       setTimeout(() => {
+        result.style.opacity = 0; //preparing animation
         result.style.display = "flex";
         resultSpan.innerText = exclamation;
 
+        result.classList.add('animate-result');
+
         setTimeout(() => {
+          result.classList.remove('animate-result');
           result.style.display = "none";
 
           btnPlay.style.pointerEvents = "all";
@@ -81,17 +85,17 @@ function RobotResponse(randRobot1) {
     if (randRobot1 == randRobot2) {
       let exclamation = "Tie";
       resultSpan.style.color = "hsl(0 0% 20%)";
-      result.style.boxShadow = "0 0 0 3px hsl(0 0% 20%)";
+      result.style.boxShadow = "0 0 50px 3px hsl(0 0% 60%)";
       displayResult(exclamation);
     } else if (randRobot1 - randRobot2 == 1 || randRobot1 - randRobot2 == -2) {
       let exclamation = `${spanRobotNames[0].innerText} wins`;
       resultSpan.style.color = "var(--clr-2-dark)";
-      result.style.boxShadow = "0 0 0 3px var(--clr-2-dark)";
+      result.style.boxShadow = "0 0 50px 3px var(--clr-2)";
       displayResult(exclamation);
     } else {
       let exclamation = `${spanRobotNames[1].innerText} wins`;
       resultSpan.style.color = "var(--clr-3-dark)";
-      result.style.boxShadow = "0 0 0 3px var(--clr-3-dark)";
+      result.style.boxShadow = "0 0 0 50px 3px var(--clr-3)";
       displayResult(exclamation);
     }
   }, 1500);

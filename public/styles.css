@@ -59,15 +59,15 @@ main {
 .grid {
 	position: relative;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: 1fr;
 	grid-template-rows: repeat(8, auto);
 
 	grid-template-areas:
-		'name-2 name-2 name-2 name-2'
-		'hand-2  hand-2  hand-2  hand-2'
-		'hand-1  hand-1  hand-1  hand-1'
-		'choose choose choose choose'
-		'name-1 name-1 name-1 name-1';
+		'name-2'
+		'hand-2'
+		'hand-1'
+		'choose'
+		'name-1';
 
 	min-width: 250px;
 	margin: 0 auto;
@@ -200,6 +200,18 @@ main {
 	}
 }
 
+@keyframes result-fadeIn {
+	0% {
+		opacity: 0;
+	}
+	90% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
 .choose {
 	min-height: 24vh;
 	display: flex;
@@ -230,9 +242,9 @@ button.scissors {
 	height: 4.5em;
 	width: 15em;
 
-	/* you thought you knew all the ways to center a div... hehehe */
+	/* you thought you knew all the ways to center a div... */
 	position: fixed;
-	inset: 0;
+	inset: -2.25em 0 0 0;
 	margin: auto;
 
 	transform: translateY(-6.5rem);
@@ -241,6 +253,10 @@ button.scissors {
 .result > span {
 	font-weight: 900;
 	font-size: 1.8em;
+}
+
+.animate-result {
+	animation: result-fadeIn var(--animation-duration) ease;
 }
 
 /* ----- grid areas ----- */
@@ -288,10 +304,11 @@ footer a {
 
 @media (orientation: landscape) {
 	.grid {
+		grid-template-columns: repeat(2, 1fr); /*1fr 1fr */
 		grid-template-areas:
-			'name-2  name-2  name-1  name-1'
-			'hand-2  hand-2  hand-1  hand-1'
-			'choose  choose  choose  choose';
+			'name-2  name-1'
+			'hand-2  hand-1'
+			'choose  choose';
 
 		/* 
       names  = 15vh
